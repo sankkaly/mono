@@ -3,19 +3,25 @@ package com.example.mono.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -31,15 +37,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mono.R
-
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
 
 @Composable
-fun Login(navigateToGetStarted: ()-> Unit){
+fun Register(navigateToGetStarted: ()-> Unit){
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -57,14 +64,14 @@ fun Login(navigateToGetStarted: ()-> Unit){
             Column (modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp, 0.dp)){
-                Text(text = "Welcome Back!",
+                Text(text = "Create account!",
                     style = TextStyle(
                         Color(0xff169C89),
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Medium
                     )
                 )
-                Text(text = "Enter your credentials to continue.",
+                Text(text = "Register to get started.",
                     style = TextStyle(
                         Color(0xFF969595),
                         fontSize = 16.sp
@@ -76,6 +83,20 @@ fun Login(navigateToGetStarted: ()-> Unit){
                 androidx.compose.material3.OutlinedTextField(
                     value = username,
                     onValueChange = { username = it },
+                    label = { Text(text = "Name", color = Color(0xFF969595)) },
+                    leadingIcon = { Icon(imageVector = Icons.Filled.AccountCircle, contentDescription = "email", tint = Color(0xFF969595) )},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp, 3.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedBorderColor = Color(0xFF969595),
+                        focusedBorderColor = Color(0xff169C89),
+                        focusedLabelColor = Color(0xff169C89)
+                    )
+                )
+                androidx.compose.material3.OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
                     label = { Text(text = "Email", color = Color(0xFF969595)) },
                     leadingIcon = { Icon(imageVector = Icons.Filled.Email, contentDescription = "email", tint = Color(0xFF969595) )},
                     modifier = Modifier
@@ -85,7 +106,9 @@ fun Login(navigateToGetStarted: ()-> Unit){
                         unfocusedBorderColor = Color(0xFF969595),
                         focusedBorderColor = Color(0xff169C89),
                         focusedLabelColor = Color(0xff169C89)
+
                     )
+
                 )
                 androidx.compose.material3.OutlinedTextField(
                     value = password,
@@ -101,33 +124,64 @@ fun Login(navigateToGetStarted: ()-> Unit){
                         focusedLabelColor = Color(0xff169C89)
 
                     )
+
+                )
+                androidx.compose.material3.OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text(text = "Confirm Password", color = Color(0xFF969595)) },
+                    leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = "email", tint = Color(0xFF969595) )},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp, 3.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedBorderColor = Color(0xFF969595),
+                        focusedBorderColor = Color(0xff169C89),
+                        focusedLabelColor = Color(0xff169C89)
+
+                    )
+
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Column (modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp, 5.dp)){
-                    Text(text = "Forgot Password?",
-                        style = TextStyle(
-                            color = Color(0xff169C89)
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth())
+                    .padding(0.dp, 5.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally){
+                    Row (modifier = Modifier
+                        .padding(5.dp, 0.dp),
+                        horizontalArrangement = Arrangement.SpaceAround){
+                        Checkbox(checked = false,
+                                onCheckedChange = {})
+
+                        Text(text = "By registering, you are agreeing with our Terms of Use and Privacy Policy",
+                            modifier = Modifier.padding(4.dp, 10.dp),
+                            style = TextStyle(
+                                color = Color(0xFF969595)
+                            ))
+                    }
+
+
                     Spacer(modifier = Modifier.height(10.dp))
                     androidx.compose.material3.Button(
                         onClick = {},
                         shape = RoundedCornerShape(7.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xff169C89)),
-                        modifier = Modifier.fillMaxWidth().height(48.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp)
+                            .padding(12.dp, 0.dp)
                         ){
-                        Text(text = "Login")
+                        Text(text = "Register")
                     }
+                }
                 }
 
             }
         }
 
-        }
 }
+
 
 // navigateToGetStarted: ()-> Unit
 //navigateToGetStarted()

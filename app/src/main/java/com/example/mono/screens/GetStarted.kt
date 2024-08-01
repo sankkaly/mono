@@ -27,9 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mono.components.RectangleShape
 
-@Preview
+
 @Composable
-fun GetStarted (){
+fun GetStarted (navigateToLogin: ()-> Unit, navigateToRegister: () -> Unit){
     val context = LocalContext.current
     Column (modifier = Modifier
         .fillMaxHeight()
@@ -46,7 +46,7 @@ fun GetStarted (){
                 Color(0xff438883), fontWeight = FontWeight.Bold, fontSize = 30.sp
             ))
             Spacer(modifier = Modifier.height(12.dp))
-            Button(onClick = {  },
+            Button(onClick = { navigateToRegister() },
                 modifier = Modifier
                     .width(280.dp)
                     .height(50.dp)
@@ -71,7 +71,7 @@ fun GetStarted (){
                         fontWeight = FontWeight.W400
                     ))
                 Text(text = "Log in",
-                    modifier = Modifier.clickable { Toast.makeText(context,"button clicked",Toast.LENGTH_SHORT).show() },
+                    modifier = Modifier.clickable { navigateToLogin() },
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W400,
