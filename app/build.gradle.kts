@@ -68,6 +68,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //constrainLayout in compose
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
 
 
 
@@ -92,4 +95,5 @@ dependencies {
     implementation ("androidx.compose.material:material:1.0.5")
     implementation ("androidx.compose.ui:ui-tooling-preview:1.0.5")
     debugImplementation ("androidx.compose.ui:ui-tooling:1.0.5")
+    implementation(kotlin("script-runtime"))
 }

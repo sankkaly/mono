@@ -23,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mono.screens.GetStarted
 import com.example.mono.screens.Login
+import com.example.mono.screens.Register
 
 
 class MainActivity : ComponentActivity() {
@@ -45,15 +46,21 @@ fun MyApp (){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "GetStarted") {
         composable("GetStarted"){
-            GetStarted {
+            GetStarted (
                 navController
-            }
+            )
         }
         composable("Login"){
             Login {
                 navController.navigate("GetStarted")
             }
         }
+        composable("Register"){
+            Register {
+                navController.navigate("GetStarted")
+            }
+        }
+
 
     }
 }

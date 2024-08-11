@@ -25,11 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.mono.components.RectangleShape
 
 
 @Composable
-fun GetStarted (navigateToLogin: ()-> Unit, navigateToRegister: () -> Unit){
+fun GetStarted (navController : NavController){
     val context = LocalContext.current
     Column (modifier = Modifier
         .fillMaxHeight()
@@ -46,7 +47,7 @@ fun GetStarted (navigateToLogin: ()-> Unit, navigateToRegister: () -> Unit){
                 Color(0xff438883), fontWeight = FontWeight.Bold, fontSize = 30.sp
             ))
             Spacer(modifier = Modifier.height(12.dp))
-            Button(onClick = { navigateToRegister() },
+            Button(onClick = { navController.navigate("Register") },
                 modifier = Modifier
                     .width(280.dp)
                     .height(50.dp)
@@ -71,7 +72,7 @@ fun GetStarted (navigateToLogin: ()-> Unit, navigateToRegister: () -> Unit){
                         fontWeight = FontWeight.W400
                     ))
                 Text(text = "Log in",
-                    modifier = Modifier.clickable { navigateToLogin() },
+                    modifier = Modifier.clickable { navController.navigate("Login") },
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.W400,
