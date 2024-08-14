@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.mono.R
 import com.example.mono.components.Card
+import com.example.mono.components.ListViewComponent
 
 @Composable
 fun HomeScreen(){
@@ -59,6 +60,12 @@ fun HomeScreen(){
             Card(modifier = Modifier
                 .constrainAs(card){
                     top.linkTo(nameRow.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                })
+            ListViewComponent(modifier = Modifier
+                .constrainAs(list){
+                    top.linkTo(card.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 })
